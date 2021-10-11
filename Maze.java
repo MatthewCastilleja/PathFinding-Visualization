@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class Maze extends JPanel implements KeyListener {
 
+
+    // Instance variables
     private Square[][] squares;
     private HashSet<Integer> specialSquares;
     private Square start;
@@ -15,7 +17,7 @@ public class Maze extends JPanel implements KeyListener {
     final private int height = 600;
 
 
-    /*
+    /**
      * Creates a new instance of a Maze object
      * Instanciates a 20 x 20 grid of Square objects
      */
@@ -51,18 +53,19 @@ public class Maze extends JPanel implements KeyListener {
     }
 
 
-    /*
+    /**
      * Override the getPreferredSize method
-     * Return: The dimensions of the JPanel instance
+     * @return the dimensions of the JPanel instance
      */
     public Dimension getPreferredSize() {
         return new Dimension(width, height);
     }
     
 
-    /*
+    /**
      * Paints the components of the Maze onto the Graphics object
      * pre: g != null
+     * @param g the Graphics objects that will be painted on.
      */
     public void paintComponent(Graphics g) {
 
@@ -82,8 +85,8 @@ public class Maze extends JPanel implements KeyListener {
     }
 
 
-    /*
-     * 
+    /**
+     * Clear the visualization and setup a new maze to be solved.
      */
     public void resetMaze() {
         clearSquares();
@@ -93,7 +96,7 @@ public class Maze extends JPanel implements KeyListener {
     }
 
 
-    /*
+    /**
      * Clear all of the instance variables
      * Create a new HashSet of the special Square indices
      * Create a new 2d array of base Square objects
@@ -113,7 +116,7 @@ public class Maze extends JPanel implements KeyListener {
     }
 
 
-    /*
+    /**
      * Setup the special Square objects
      * Sets the state of 100 randomly chosen Squares to a wall
      * Sets the state of a single Square to the start
@@ -177,10 +180,14 @@ public class Maze extends JPanel implements KeyListener {
 
 
     /**
-     *
+     * Update the state variables of all of the Square
+     * objects in the parameter path to "Path".
+     * @param path the path of Square objects from the start to the end Square.
      */
     public void showPath(ArrayList<Square> path) {
         System.out.println("Show Path");
+
+        // Update Squares in path
         for (int i = 1; i < path.size() - 1; i++) {
             path.get(i).setState("Path");
         }
